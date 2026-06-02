@@ -21,7 +21,7 @@ class Ingredient:
         return self.name == other.name and self.unit == other.unit
 
 class Recipe:
-    def __init__(self,title,ingredients):
+    def __init__(self,title,ingredients=None):
         self.title = title
         if ingredients:
             self.ingredients = ingredients
@@ -87,6 +87,18 @@ class ShoppingList:
         new_shoppingList = ShoppingList()
         new_shoppingList._items=self._items+other._items
         return new_shoppingList
+    
+
+class DietaryRecipe(Recipe):
+    def __init__(self,title,diet_type,ingredients=None):
+        super().__init__(title,ingredients)
+        self.diet_type = diet_type
+    def scale(self,ratio):
+        recipe = super().scale(ratio)
+        new_dietaryRecipe = DietaryRecipe(recipe.title,self.diet_type, recipe.ingredients) 
+        return new_dietaryRecipe
+    def __str__(self):
+        return f"[{self.diet_type}] {super().__str__()}"
 
 
 
