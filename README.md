@@ -36,7 +36,7 @@ python classes.py
 ### Для запуска тестов:
 
 ```bash
-pytest test.py
+pytest test_recipes.py
 ```
 
 ## Автор
